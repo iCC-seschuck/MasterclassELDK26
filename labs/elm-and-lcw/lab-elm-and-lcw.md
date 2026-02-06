@@ -15,6 +15,8 @@ As access packages are an easy way to request access to multiple resources in on
 
 Microsoft Learn source: [Entitlement Management - Access Package Create](https://learn.microsoft.com/en-us/entra/id-governance/entitlement-management-access-package-create)
 
+&nbsp;
+
 ## Lab 2.2 - Create an access package with an auto assignement policy
 
 Now you've seen that access packages are an easy way to request access to multiple resources in one go, let's create another access package which will auto-assign users to the access package which:
@@ -28,6 +30,8 @@ Once the access package is created, open the access package and add a new 'auto 
 
 Microsoft Learn source: [Entitlement Management - Access Package Auto Assignment Policy](https://learn.microsoft.com/en-us/entra/id-governance/entitlement-management-access-package-auto-assignment-policy)
 
+&nbsp;
+
 ## Lab 2.3 - Create pre-hire workflow
 
 Now first create a pre-hire workflow in lifecycle workflows and scope the pre-hire workflow to be executed for users with the department 'ELDK 2026' 7 days prior to the employeeHireDate. Within this workflow make sure the following actions are set:
@@ -35,6 +39,8 @@ Now first create a pre-hire workflow in lifecycle workflows and scope the pre-hi
 - Assign at least a mailbox license to the end user
 
 Microsoft Learn source: [Lifecycle Workflows - Create](https://learn.microsoft.com/en-us/entra/id-governance/create-lifecycle-workflow)
+
+&nbsp;
 
 ## Lab 2.4 - Create new hire workflow
 
@@ -45,12 +51,16 @@ After the pre-hire workflow has been created, create a new-hire workflow which i
 
 Microsoft Learn source:  [Lifecycle Workflows - Create](https://learn.microsoft.com/en-us/entra/id-governance/create-lifecycle-workflow)
 
+&nbsp;
+
 ## Lab 2.5 - Create post-onboarding workflow
 
 At last, create a post-onboarding workflow which is scoped to users with the department 'ELDK 2026' 7 days after the employeeHireDate. Within this workflow make sure the following tasks are executed:
 - Send onboarding reminder email to manager
 
 Microsoft Learn source:  [Lifecycle Workflows - Create](https://learn.microsoft.com/en-us/entra/id-governance/create-lifecycle-workflow)
+
+&nbsp;
 
 ## Lab 2.6 - Run the workflows one-by-one
 
@@ -59,6 +69,8 @@ Make sure that all tasks are exectued successfully.\
 
 Microsoft Learn source:  [Lifecycle Workflows - Run on Demand](https://learn.microsoft.com/en-us/entra/id-governance/on-demand-workflow)
 
+&nbsp;
+
 ## Advanced Lab 2.7 - Create a custom extension for access pacakges
 
 In some cases you perhaps want to add more advanced scenario's with low code to an access package, for that you can use custom extensions. If you've got time left during the lab you can create a custom extension which can be configured within one of the access packages created earlier. To do this:
@@ -66,6 +78,8 @@ In some cases you perhaps want to add more advanced scenario's with low code to 
 - Configure the custom extension in one of the access packages created earlier to be triggered after the 'Assignment has been granted'
 
 Microsoft Learn source: [Entitlement Management - Custom Extension](https://learn.microsoft.com/en-us/entra/id-governance/entitlement-management-logic-apps-integration)
+
+&nbsp;
 
 ## Advanced Lab 2.8 - Create a custom extension for lifecycle workflows
 
