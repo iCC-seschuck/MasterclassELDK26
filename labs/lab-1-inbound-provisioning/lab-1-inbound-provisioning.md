@@ -1,10 +1,24 @@
-# Lab 1 - Inbound Provisioning
+# Lab 1 - Inbound Provisioning API
+
+In this first lab you will create an Inbound API-drive Provisioning App in your Tenant, customize attribute mappings and schema, and learn how to post SCIM payloads to create and update users in your tenant.
 
 ## Lab 1.1 - Create new API-driven Inbound Provisining App in Entra ID
 
-Create new API-driven Inbound Provisioning in Enterprise Applications, provide details and specification here for how to set it up here..
+In the Microsoft Entra portal, go to Enterprise Apps and click "+ New application". From the Microsoft Entra App gallery, search for "API-driven provisioning" and you should see two options:
+
+- API-driven provisioning to Microsoft Entra ID
+- API-driven provisioning to on-premises Active Directory
+
+Click to select "API-driven provisioning to Microsoft Entra ID", give it a descriptive name like "ELDK26 API-driven provisioning to Entra ID" and click Create.
+
+After the application is created, under Manage, click on Provisioning. Notice the different selections under "Get started", but we will start by clicking "+ New configuration" at the top. At the blade for "New provisioning configuration", select Create. After the provisioning configuration has been created, notice the Basic information and make a note of these for later:
+
+- Service principal object id
+- Job ID
 
 ## Lab 1.2 - Attribute Mappings
+
+Mapping attributes is an important part of inbound provisioning, where you will match your incoming data, like from an HR system or a custom source, to the attributes in Entra ID.
 
 Attribute mappings to create:
 
@@ -16,6 +30,8 @@ Attribute mappings to create:
 | employeeType | userType |
 
 ## Lab 1.3 - Edit Attribute List and Add Schema
+
+You can even customize the schema beyond the default attributes in the API.
 
 Advanced - Edit Attribute List
 
@@ -30,7 +46,11 @@ Add more Attribute mappings:
 employeeHireDate -> urn:ietf:params:scim:schemas:extension:yourorgnamehere:1.0:User:HireDate
 employeeLeaveDateTime -> urn:ietf:params:scim:schemas:extension:yourorgnamehere:1.0:User:LeaveDate
 
-## Lab 1.4 - Create App Registration for Client
+## Lab 1.4 - Send SCIM payload via Graph Explorer
+
+Go to Microsoft Graph Explorer https://aka.ms/ge.More detailed instructions to follow..
+
+## Lab 1.5 - Create App Registration for Client
 
 https://graph.microsoft.com/v1.0/servicePrincipals/{service-principal-object-id}/synchronization/jobs/{job-id}/bulkUpload
 
