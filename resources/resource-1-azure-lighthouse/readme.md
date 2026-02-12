@@ -2,11 +2,11 @@
 
 The following will assist in accessing an Azure Subscription in another tenant than the Entra ID tenant you are working in.
 
-This is especially useful where you are using Demo Resources tenants like CDX (Contoso tenant) or a Microsoft 365 Developer Sandbox tenant where you normally would have have direct access to an Azure subscription.
+This is especially useful where you are using Demo Resources tenants like CDX (Contoso tenant) or a Microsoft 365 Developer Sandbox tenant where you normally would have direct access to an Azure subscription.
 
 ## Prepare your Entra tenant
 
-In the Entra tenant where you will be working with labs and demo scenarios, take a note of the Tenant ID, and then create a Security Group where you add your admin account (and any other admin accounts needed), and take a note of the Group Obect ID.
+In the Entra tenant where you will be working with labs and demo scenarios, take a note of the Tenant ID, and then create a Security Group where you add your admin account (and any other admin accounts needed), and take a note of the Group Object ID.
 
 ## Login to Azure Subscription
 
