@@ -10,7 +10,7 @@ Login to an Azure subscription where you can create resources like Resource Grou
 az login --tenant yourtenant.onmicrosoft.com
 ```
 
-After logging in, confirm the right subscription. If you need to verify or change between Azure subscriptons, run:
+After logging in, confirm the right subscription. If you need to verify or change between Azure subscriptions, run:
 
 ```azurecli
 az account show
