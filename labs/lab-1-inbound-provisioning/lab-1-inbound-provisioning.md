@@ -2,7 +2,7 @@
 
 In this first lab you will create an Inbound API-drive Provisioning App in your Tenant, customize attribute mappings and schema, and learn how to post SCIM payloads to create and update users in your tenant.
 
-## Lab 1.1 - Create new API-driven Inbound Provisining App in Entra ID
+## Lab 1.1 - Create new API-driven Inbound Provisioning App in Entra ID
 
 In the Microsoft Entra portal, go to Enterprise Apps and click "+ New application". From the Microsoft Entra App gallery, search for "API-driven provisioning" and you should see two options:
 
