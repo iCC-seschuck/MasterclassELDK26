@@ -56,28 +56,47 @@ $ResourcesToInclude = @(
 $TenantId = Read-Host -Prompt "Enter your tenant ID"
 Connect-MgGraph -Scopes "Application.ReadWrite.All", "AppRoleAssignment.ReadWrite.All" -TenantId $TenantId
 $UtcmAppId = "03b07b79-c5bc-4b5e-9bfa-13acf4a99998"
-New-MgServicePrincipal -AppId $UtcmAppId
+
+# Check if application (Service Principal) exists
+$UTCM = Get-MgServicePrincipal -Filter "AppId eq '$UtcmAppId'" -ErrorAction SilentlyContinue
+if (-not $UTCM) {
+    Write-Host "Creating Service Principal for UTCM AppId: $UtcmAppId"
+    New-MgServicePrincipal -AppId $UtcmAppId
+    $UTCM = Get-MgServicePrincipal -Filter "AppId eq '$UtcmAppId'"
+} else {
+    Write-Host "Service Principal already exists for UTCM AppId: $UtcmAppId"
+}
 
 # Assign the required permissions to the service principal
 $permissions = @('User.Read.All', 'Application.Read.All', 'Group.Read.All', 'Policy.Read.All')
 $Graph = Get-MgServicePrincipal -Filter "AppId eq '00000003-0000-0000-c000-000000000000'"
-$UTCM = Get-MgServicePrincipal -Filter "AppId eq $($UtcmAppId)"
+
+# Get existing assignments to avoid duplicates
+$ExistingAssignments = Get-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $UTCM.Id -All
 
 foreach ($requestedPermission in $permissions) {
     $AppRole = $Graph.AppRoles | Where-Object { $_.Value -eq $requestedPermission }
-    $body = @{
-        AppRoleId   = $AppRole.Id
-        ResourceId  = $Graph.Id
-        PrincipalId = $UTCM.Id
+    
+    # Check if permission is already assigned
+    $IsAssigned = $ExistingAssignments | Where-Object { $_.AppRoleId -eq $AppRole.Id -and $_.ResourceId -eq $Graph.Id }
+
+    if (-not $IsAssigned) {
+        Write-Host "Assigning permission: $requestedPermission"
+        $body = @{
+            AppRoleId   = $AppRole.Id
+            ResourceId  = $Graph.Id
+            PrincipalId = $UTCM.Id
+        }
+        New-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $UTCM.Id -BodyParameter $body
+    } else {
+        Write-Host "Permission already assigned: $requestedPermission"
     }
-    New-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $UTCM.Id -BodyParameter $body
 }
 #endregion
 
 #region 3. Connect to Microsoft Graph with the required scopes
 Connect-MgGraph -Scopes "ConfigurationMonitoring.ReadWrite.All"
 #endregion
-
 
 #region 4. Create a snapshot of Conditional Access policy configurations via Microsoft Graph PowerShell SDK
 $SnapshotDisplayName = "Conditional Access Baseline"
@@ -90,6 +109,8 @@ $body = @{
 }
 Invoke-MgGraphRequest -Uri $Uri -Method POST -Body $body
 #endregion
+
+# Wait until the snapshot job is completed before proceeding to the next steps.
 
 #region 5. Get the configuration snapshot that was just created
 $Filter = "displayName eq '$($SnapshotDisplayName)'"
@@ -108,17 +129,22 @@ $Resources = Invoke-MgGraphRequest -Uri $ResourceLocation -Method GET
 $DesiredResources = [PSCustomObject]@{
     displayName = $Resources.displayName
     description = $Resources.description
-    resources   = @($Resources.resources | Where-Object { $_.properties.IncludeExternalTenantsMembers -eq "44d74d74-3aff-4c05-afc6-a553358e4027" })
+    resources   = @($Resources.resources | Where-Object { $_.properties.BuiltInControls -eq "mfa" `
+                -and $_.properties.IncludeUsers -contains "All" `
+                -and $_.properties.IncludeApplications -contains "All" `
+                -and $_.properties.SignInRiskLevels -contains "high" `
+                -and $_.properties.BuiltInControls -contains "mfa"
+        })
 }
 #endregion
 
 #region 6. Set up a configuration monitor with the snapshot data
-$MonitorDisplayName = "CA Policies MRT"
+$MonitorDisplayName = "CA Policies for Sign-in Risk"
 
 $Uri = "beta/admin/configurationManagement/configurationMonitors"
 $body = @{
     displayName = $MonitorDisplayName
-    description = "Monitor critical CA policies for Managing Tenant"
+    description = "Monitor critical CA policies for Sign-in Risk"
     baseline    = @{
         displayName = $DesiredResources.displayName
         description = $DesiredResources.description
@@ -141,6 +167,8 @@ $Uri = "/beta/admin/configurationManagement/configurationMonitoringResults?`$fil
 $MonitorResults = Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputType PSObject | Select -expand Value
 #endregion
 
+# Wait for necessary time based on the frequency set for the monitor to get the monitoring results before proceeding to analyze the results for any drifts in the scoped Conditional Access policies.
+
 #region 9. Analyze the monitoring results for any drifts in the Conditional Access policies
 foreach ($result in $MonitorResults) {
     if ($result.driftsCount -gt 0) {
@@ -154,4 +182,5 @@ foreach ($result in $MonitorResults) {
         Write-Host "No drift detected in monitor: $($MonitorJob[0].displayName)"
     }
 }
+#endregion
 
