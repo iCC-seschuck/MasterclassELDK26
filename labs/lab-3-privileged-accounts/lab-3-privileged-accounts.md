@@ -21,7 +21,7 @@ If you don't have access to any Azure subscription at all, skip to the last part
 
 ### 3.1.1 - Deploy Logic App and Managed Identity with Bicep
 
-More code details coming, referring to ready [click-to-deploy template](../../resources/resource-3-bicep-custom-extension/readme.md)
+More code details coming, referring to ready [click-to-deploy template](../../resources/resource-3-bicep-custom-extensions/readme.md)
 
 ### 3.1.2 - Add Custom Extension to Entitlement Management Catalog
 
