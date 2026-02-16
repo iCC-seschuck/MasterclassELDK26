@@ -66,5 +66,68 @@ Run the command `Invoke-Maester -Tag EIDSCA, CA` and review the results as well 
 Run the command `Invoke-Maester -Tag App, Recommendation, XSPM -IncludeLongRunning` to get test results for application identities and critical assets from Exposure Management. The execution of this check can take up to 15 minutes.
 
 ## 3.7 Create your own custom Maester check
+
 Use the steps and example in the Maester documentation to create your own test:
 https://maester.dev/docs/writing-tests/formatting-test-results#marking-tests-as-investigate
+
+For your convenience, here is the first test we are going to create.
+
+It checks if there are any conditional access policies in "report-only" mode in the tenant. All report-only are shown in the results and require investigation to either enable or remove them.
+
+```powershell
+Describe "ContosoEntraConfig" -Tag  "Contoso" {
+    It "CT0002: Read-only CA policies should be reviewed" {
+
+        $policies = Invoke-MtGraphRequest -RelativeUri "identity/conditionalAccess/policies"
+
+        $readOnlyPolicies = $policies | Where-Object { $_.state -eq 'enabledForReportingButNotEnforced' }
+
+        $description = "Checks if read-only conditional access policies should be reviewed."
+
+        if ($readOnlyPolicies.Count -gt 0) {
+            $result = "Found $($readOnlyPolicies.Count) conditional access policies that are in report-only mode. Please review if this is intended.`n`n"
+            $result += "| Policy Name | State |`n"
+            $result += "| --- | --- |`n"
+            foreach ($policy in $readOnlyPolicies) {
+                $result += "| $($policy.displayName) | $($policy.state) |`n"
+            }
+            Add-MtTestResultDetail -Description $description -Result $result -Investigate
+        } else {
+            Add-MtTestResultDetail -Description $description -Result "Well done. No report-only policies were found to investigate."
+        }
+
+        $readOnlyPolicies.Count | Should -Be 0 -Because "Conditional access policies should not be in read-only mode for the long term. Please review and enable the policy."
+    }
+}
+```
+
+The previous test results was very bare bones and did not provide click through options for the user to easily navigate to the portal or Graph Explorer to investigate further. We can enhance the test result by adding deep links to the portal and Graph Explorer.
+
+Maester includes a number of helper cmdlets and shortcuts to make this easy, in this lab we will use
+
+- `Get-MtConditionalAccessPolicy` - Retrieves conditional access policies
+- `-GraphObjects` - This parameter can be used to pass the objects that are relevant to the test result, which will then be used by Maester to create deep links
+- `-GraphObjectType` - This parameter is used in conjunction with `-GraphObjects` to specify the type of the objects being passed, which helps Maester to create the correct deep links.
+    - A number of GraphObjectTypes are supported, including `User`, `Application`, `ConditionalAccess`, `Role`, and more.
+
+```powershell
+Describe "ContosoEntraConfig" -Tag  "Contoso" {
+    It "CT0003: Read-only CA policies should be reviewed" {
+
+        $policies = Get-MtConditionalAccessPolicy
+
+        $readOnlyPolicies = $policies | Where-Object { $_.state -eq 'enabledForReportingButNotEnforced' }
+
+        $description = "Checks if read-only conditional access policies should be reviewed."
+
+        if ($readOnlyPolicies.Count -gt 0) {
+            $result = "Found $($readOnlyPolicies.Count) conditional access policies that are in report-only mode. Please review if this is intended.`n`n%TestResult%"
+            Add-MtTestResultDetail -Description $description -Result $result -Investigate -GraphObjects $readOnlyPolicies -GraphObjectType ConditionalAccess
+        } else {
+            Add-MtTestResultDetail -Description $description -Result "Well done. No report-only policies were found to investigate."
+        }
+
+        $readOnlyPolicies.Count | Should -Be 0 -Because "Conditional access policies should not be in read-only mode for the long term. Please review and enable the policy."
+    }
+}
+```
