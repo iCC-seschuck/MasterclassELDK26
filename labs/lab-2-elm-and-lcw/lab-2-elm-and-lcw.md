@@ -79,7 +79,7 @@ Microsoft Learn source:  [Lifecycle Workflows - Run on Demand](https://learn.mic
 
 &nbsp;
 
-## Advanced Lab 2.7 - Create a custom extension for access packages
+## Lab 2.7 - Create a custom extension for access packages
 
 In some cases you perhaps want to add more advanced scenario's with low code to an access package, for that you can use custom extensions. For the next lab create a custom extension for requesting a privileged account and create a new access package which uses the custom extension on the 'assignment granted' stage. To do this:
 
