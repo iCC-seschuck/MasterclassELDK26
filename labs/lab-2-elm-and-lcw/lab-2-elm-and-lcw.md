@@ -79,6 +79,22 @@ Microsoft Learn source:  [Lifecycle Workflows - Run on Demand](https://learn.mic
 
 &nbsp;
 
+## Advanced Lab 2.7 - Create a custom extension for access packages
+
+In some cases you perhaps want to add more advanced scenario's with low code to an access package, for that you can use custom extensions. For the next lab create a custom extension for requesting a privileged account and create a new access package which uses the custom extension on the 'assignment granted' stage. To do this:
+
+- Create a custom extension in the 'ELDK 2026' catalog.
+- Create an accesss package in the 'ELDK 2026' catalog.
+- Provides access to no resources.
+- Can be requested by all members in your directory (excluding guests and prefferaby a dynamic group which only contains enabled users with an employeeID).
+- Doesn't have an approval process (prefferably it has, but for testing purposes we skip this step).
+- Has no lifecycle or access review configured.
+- Configure the custom extension created earlier to be triggered after the 'Assignment has been granted' stage.
+
+Microsoft Learn source: [Entitlement Management - Custom Extension](https://learn.microsoft.com/en-us/entra/id-governance/entitlement-management-logic-apps-integration)
+
+&nbsp;
+
 ## Lab 2.8 - Enable the passkey authentication method
 
 Now the onboarding has finished let's make sure that once the end user is starting to use their TAP they can onboard a passkey to their account. Within Entra ID go to Authentication Methods with an admin account which has the authentication policy administrator role. Here make sure that:
@@ -99,18 +115,7 @@ If you've succesfully completed all the earlier steps in this lab you should be 
 
 &nbsp;
 
-## Advanced Lab 2.10 - Create a custom extension for access packages
-
-In some cases you perhaps want to add more advanced scenario's with low code to an access package, for that you can use custom extensions. If you've got time left during the lab you can create a custom extension which can be configured within one of the access packages created earlier. To do this:
-
-- Create a custom extension in the 'ELDK 2026' catalog.
-- Configure the custom extension in one of the access packages created earlier to be triggered after the 'Assignment has been granted'
-
-Microsoft Learn source: [Entitlement Management - Custom Extension](https://learn.microsoft.com/en-us/entra/id-governance/entitlement-management-logic-apps-integration)
-
-&nbsp;
-
-## Advanced Lab 2.11 - Create a custom extension for lifecycle workflows
+## Advanced Lab 2.10 - Create a custom extension for lifecycle workflows
 
 In some cases you perhaps want to add more advanced scenario's with low code to a lifecycle workflow, for that you can use custom extensions. If you've got time left during the lab you can create a custom extension which can be used within one of the lifecycle workflows created earlier. To do this:
 
