@@ -7,7 +7,7 @@ Now the onboarding has finished let's make sure that once the end user is starti
 - There is passkey profile configured for all users whereby device-bound passkeys are enabled
 - There is passkey profile configured for all users whereby synced passkeys are enabled, this can be targetted against a dynamic group containing all regular user accounts, or a test group.
 
-Microsoft Learn source:  [Entra ID - Passkey Profiles](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-authentication-passkey-profiles)
+Microsoft Learn source: [Entra ID - Passkey Profiles](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-authentication-passkey-profiles)
 
 &nbsp;
 

@@ -128,9 +128,10 @@ Now the access package has been configured correctly lets verify if it's fully o
 &nbsp;
 
 ## Lab 2.8 - Summary & Discussion
+
 To finish the lab, turn to your sideperson and discuss or reflect over the following questions.
 
 - Identify what the 'glue' is between the regular user object and the just created privileged account object (e.g. how do we know these belong together)?
 - What is the reasoning for using Exchange Online Plus addressing on admin accounts?
 - Should access packages being created as well to request individual roles or should role-assignalbe groups be used within access pacakages?
-- How should the offboarding of privileged accounts be handled, lifecycle workflows or access pacakages?
+- How should the offboarding of privileged accounts be handled, lifecycle workflows or access packages?
