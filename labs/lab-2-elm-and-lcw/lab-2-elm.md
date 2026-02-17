@@ -108,6 +108,7 @@ Once the source code is copied in, open the designer in logic apps and make sure
 - Change the UserID within the send email action
 - Verify the HTML Body
 - Verify the callback action and message
+- The right Inbound provisioning API endpoint needs to be defined in the logic app.
 
 Once all the above steps are completed don't forget to hit **save** on the logic app and proceed to the next labb exercise.
 
@@ -135,17 +136,4 @@ Now the access package has been configured correctly lets verify if it's fully o
 
 &nbsp;
 
-## Lab 2.8 - Enable the passkey authentication method
 
-Now the onboarding has finished let's make sure that once the end user is starting to use their TAP they can onboard a passkey to their account. Within Entra ID go to Authentication Methods with an admin account which has the authentication policy administrator role. Here make sure that:
-
-- There is passkey profile configured for all users whereby device-bound passkeys are enabled
-- There is passkey profile configured for all users whereby synced passkeys are enabled, this can be targetted against a dynamic group containing all regular user accounts, or a test group.
-
-Microsoft Learn source:  [Entra ID - Passkey Profiles](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-authentication-passkey-profiles)
-
-&nbsp;
-
-## Lab 2.9 - Sign-in with your privileged account and register a passkey
-
-Now you've received a Temporary Access Pass in your regular email, sign-in with your newly generated privileged account and register a passkey underneath your account to make sure your privileged account becomes phishing resistant.
