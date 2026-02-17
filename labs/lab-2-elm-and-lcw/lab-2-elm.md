@@ -103,9 +103,19 @@ Microsoft Learn source: [Entitlement Management - Custom Extension](https://lear
 
 More details coming...
 
-## Lab 2.6 - Provide the managed identity the right MS Graph permissions and Entra roles
+## Lab 2.6 - Provide the managed identity the right MSGraph permissions and Entra roles
 
-More details coming..., referring to [privileged-user.json](../../resources/resource-2-scim-sample-payloads/privileged-user.json)
+To make sure that the managed identity has the right permissions within Microsoft Graph and Microsoft Entra we need to apply the following permissions:
+
+| Target | Permissions or role | reasoning |
+| --- | --- | --- |
+| Microsoft Graph | User.Read.All, Mail.Send, AuditLog.Read.All, SynchronizationData-User.Upload | Required to grab the user details, execute the API call against the Inbound Provisioning API and being able to send an email via a Microsoft Graph API call. |
+| Microsoft Entra | Authentication Administrator, Access Package Assignment Administrator (on ELDK 2026 Catalog). | Required to generate the temporary access pass for a non-privileged user account and execute the API callback against the custom extension in Entitlement Management |
+
+For the Microsoft Graph permissions the following script can be used: [Configure-MsGRaphPermissions.ps1](../../resources/resource-5-msgraph-permissions/Configure-MsGraphPermissions.ps1)
+For the Microsoft Entra permissions the two roles need to be manually assigned.
+
+Once you're ready, verify if the MS Graph permissions and roles have been configured successfully on the managed identity and continue to the next lab step.
 
 ## Lab 2.7 - Test the Access Package by requesting access
 
