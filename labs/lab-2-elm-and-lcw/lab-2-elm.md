@@ -1,23 +1,12 @@
 # Lab 2 - Entitlement Management
 
-The activities in this lab will all be executed within the [Entitlement Management](https://entra.microsoft.com/#view/Microsoft_AAD_ERM/DashboardBlade/~/GettingStarted) & [Lifecycle Workflows](https://entra.microsoft.com/#view/Microsoft_AAD_LifecycleManagement/CommonMenuBlade/~/overview) blade in Entra ID. For this you need at a bear minimum 'Identity Governance Administrator' and 'Lifecycle Workflow Administrator'.
+The activities in this lab will all be executed within the [Entitlement Management](https://entra.microsoft.com/#view/Microsoft_AAD_ERM/DashboardBlade/~/GettingStarted) & [Lifecycle Workflows](https://entra.microsoft.com/#view/Microsoft_AAD_LifecycleManagement/CommonMenuBlade/~/overview) blade in Entra ID. For this you need at a bear minimum 'Identity Governance Administrator' and 'Lifecycle Workflow Administrator'. In Azure you need to have at least contributor permission to an Azure Subscription.
 
-In this lab you will create separate privileged accounts via an Access Package request, and that request will upon approval and successful delivery, provision a separate privileged account for the targeted user.
+Within this lab you will create multiple access packages and connect those in your lifecycle workflow joiners flows. But will also contain an advanced lab with custom extensions where you will create a separate privileged accounts via an Access Package request based on your office account, and that request will (upon approval and successful delivery) provision a separate privileged account for the requestor. Important to note is that this lab will use the API-driven Provisioning API created in the previous lab exercise.
 
-The lab will use the API-driven Provisioning API created in Lab 1, and will consist of:
+**NOTE:** Creating a Logic App requires access to an Azure Subscription for your Test/Demo tenant. If you do not have an Azure Subscription directly connected to your Entra ID tenant, but can access an Azure Subscription in another tenant, please look into the description of [using Azure Lighthouse here](../../resources/resource-1-azure-lighthouse/readme.md).
 
-1. An Access Package for requesting a Privileged Account.
-    1. A self-service, direct assignment or manager assigned policy for requesting the Access Package for the target user.
-    1. Add Approvals as needed to govern who are approved to get a Privileged Role.
-    1. No resource roles are needed for the Access Package, but you can optionally add a Team or similar for maintaining and documenting routines, processes and guidelines for privileged users.
-1. A Custom Extension connected to the Access Package for the Stage "Access is Granted".
-    1. This Custom Extension Logic App must be pre-created in the Catalog.
-    1. The Logic App will retrieve the target user of the request for Privileged Access, get user details from Graph API, and push a SCIM payload to the Provisioning API for creating the Privileged Account.
-    1. The Logic App will use a Managed Identity authorized to request the necessary Graph API resources and permissions.
-
-Creating a Logic App requires access to an Azure Subscription for your Test/Demo tenant. If you do not have an Azure Subscription directly connected to your Entra ID tenant, but can access an Azure Subscription in another tenant, please look into the description of [using Azure Lighthouse here](../../resources/resource-1-azure-lighthouse/readme.md).
-
-If you don't have access to any Azure subscription at all, skip to the last part of this lab exercise, and create a privileged user account directly via Graph Explorer to the Provisioning API, similar to what you did in Lab 1 earlier.
+**NOTE:** If you don't have access to any Azure subscription at all, skip this lab exercise but make sure to create a privileged user account directly via Graph Explorer with the Provisioning API, similar to what you did in the previous lab.
 
 ## Lab 2.1 - Create an access package which can be requrested for internal users only
 
