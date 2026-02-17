@@ -56,15 +56,15 @@ Microsoft Learn source: [Entitlement Management - Access Package Auto Assignment
 
 &nbsp;
 
-## Lab 2.4 - Create a custom extension for access packages
+## Lab 2.4 - Create an access package which is using a custom extension
 
 In some cases you perhaps want to add more advanced scenario's with low code to an access package, for that you can use custom extensions. For the next lab create a custom extension for requesting a privileged account and create a new access package which uses the custom extension on the 'assignment granted' stage. To do this:
 
-- Create a custom extension for 'privileged account requests' in the 'ELDK 2026' catalog.
+- Create a custom extension with Logic App for 'privileged account requests' in the 'ELDK 2026' catalog.
 - Create an accesss package for 'privileged account requests' in the 'ELDK 2026' catalog.
-- Provides access to no resources.
+- The Access Package should not provide access to resources.
 - Can be requested by all members in your directory (excluding guests and prefferaby a dynamic group which only contains enabled users with an employeeID).
-- Doesn't have an approval process (prefferably it has, but for testing purposes we skip this step).
+- Doesn't have an approval process (prefferably it has, but for lab and testing purposes you can skip this step).
 - Has no lifecycle or access review configured.
 - Configure the custom extension created earlier to be triggered after the 'Assignment has been granted' stage.
 
@@ -72,9 +72,9 @@ Microsoft Learn source: [Entitlement Management - Custom Extension](https://lear
 
 &nbsp;
 
-### 3.1.1 - Deploy Logic App and Managed Identity with Bicep
+### 2.4.1 - Deploy Logic App and Managed Identity with Bicep
 
-We have prepared a Bicep deployment, [main.bicep](../../resources/resource-3-bicep-custom-extensions/main.bicep), that creates two Logic Apps for Custom Extensions, one for Lifecycle Workflows and one for Access Package usage. Change all TODO references to match your environment, and deploy using guidelines documented in the [readme](../../resources/resource-3-bicep-custom-extensions/readme.md)
+If you rather want to deploy the Logic App and managed Identity via bicep instead of the UI we have prepared a Bicep deployment, [main.bicep](../../resources/resource-3-bicep-custom-extensions/main.bicep), that creates two Logic Apps for Custom Extensions, one for Lifecycle Workflows and one for Access Package usage. Change all TODO references to match your environment, and deploy using guidelines documented in the [readme](../../resources/resource-3-bicep-custom-extensions/readme.md)
 
 This Bicep deployment, in addition to the Logic App Workflows, also create an User Assigned Managed Identity, gives the UAMI Graph Permissions, and connects the UAMI to the Logic Apps.
 
