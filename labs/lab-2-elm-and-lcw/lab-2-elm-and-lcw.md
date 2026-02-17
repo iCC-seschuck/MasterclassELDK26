@@ -34,7 +34,7 @@ Microsoft Learn source: [Entitlement Management - Access Package Auto Assignment
 
 &nbsp;
 
-## Lab 2.7 - Create a custom extension for access packages
+## Lab 2.3 - Create a custom extension for access packages
 
 In some cases you perhaps want to add more advanced scenario's with low code to an access package, for that you can use custom extensions. For the next lab create a custom extension for requesting a privileged account and create a new access package which uses the custom extension on the 'assignment granted' stage. To do this:
 
@@ -50,7 +50,7 @@ Microsoft Learn source: [Entitlement Management - Custom Extension](https://lear
 
 &nbsp;
 
-## Lab 2.8 - Enable the passkey authentication method
+## Lab 2.4 - Enable the passkey authentication method
 
 Now the onboarding has finished let's make sure that once the end user is starting to use their TAP they can onboard a passkey to their account. Within Entra ID go to Authentication Methods with an admin account which has the authentication policy administrator role. Here make sure that:
 
@@ -60,21 +60,3 @@ Now the onboarding has finished let's make sure that once the end user is starti
 Microsoft Learn source:  [Entra ID - Passkey Profiles](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-authentication-passkey-profiles)
 
 &nbsp;
-
-## Lab 2.9 - Onboard the user with their TAP and Passkey
-
-If you've succesfully completed all the earlier steps in this lab you should be able to onboard the end user account by:
-
-- Retrieving the Temporary Access Pass from the mailbox of the manager
-- Sign-in with the user via a web-browser and enroll for a passkey via [My Sign-ins](https://mysignins.microsoft.com/security-info)
-
-&nbsp;
-
-## Advanced Lab 2.10 - Create a custom extension for lifecycle workflows
-
-In some cases you perhaps want to add more advanced scenario's with low code to a lifecycle workflow, for that you can use custom extensions. If you've got time left during the lab you can create a custom extension which can be used within one of the lifecycle workflows created earlier. To do this:
-
-- Create a custom extension within Lifecycle Workflows
-- Configure one of the workflows to run a custom task extension which is created earlier
-
-Microsoft Learn source: [Lifecycle Workflows - Custom Task Extension](https://learn.microsoft.com/en-us/entra/id-governance/lifecycle-workflow-extensibility)
