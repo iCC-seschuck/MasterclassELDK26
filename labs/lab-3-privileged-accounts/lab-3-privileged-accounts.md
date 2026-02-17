@@ -1,8 +1,23 @@
 # Lab 3 - Securing Privileged Accounts
 
+## Lab 3.1 - Enable the passkey authentication method
 
+Now the onboarding has finished let's make sure that once the end user is starting to use their TAP they can onboard a passkey to their account. Within Entra ID go to Authentication Methods with an admin account which has the authentication policy administrator role. Here make sure that:
 
-## Lab 3.2 - Link privileged account to identity in Microsoft Defender XDR
+- There is passkey profile configured for all users whereby device-bound passkeys are enabled
+- There is passkey profile configured for all users whereby synced passkeys are enabled, this can be targetted against a dynamic group containing all regular user accounts, or a test group.
+
+Microsoft Learn source:  [Entra ID - Passkey Profiles](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-authentication-passkey-profiles)
+
+&nbsp;
+
+## Lab 3.2 - Sign-in with your privileged account and register a passkey
+
+Now you've received a Temporary Access Pass in your regular email, sign-in with your newly generated privileged account and register a passkey underneath your account to make sure your privileged account becomes phishing resistant.
+
+&nbsp;
+
+## Lab 3.3 - Link privileged account to identity in Microsoft Defender XDR
 
 Create a manual link between the privileged user and the regular (work) account of the identity:
 
@@ -14,7 +29,9 @@ More details are available in [Microsoft Learn](https://learn.microsoft.com/en-u
 
 After the link has been created, navigate to the identity page of the work account.
 
-## Lab 3.3 - Assign privileged account to Restricted Management Administrative Unit (RMAU)
+&nbsp;
+
+## Lab 3.4 - Assign privileged account to Restricted Management Administrative Unit (RMAU)
 
 1. Create an [Administrative Unit with dynamic membership](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/admin-units-members-dynamic?tabs=admin-center#add-rules-for-dynamic-membership-groups) named “Privileged Users” and enable “[Restricted management administrative unit](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/admin-units-restricted-management)” during the creation process.
 
