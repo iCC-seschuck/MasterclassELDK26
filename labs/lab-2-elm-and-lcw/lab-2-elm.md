@@ -101,7 +101,7 @@ Microsoft Learn source: [Entitlement Management - Custom Extension](https://lear
 
 ## Lab 2.5 - Edit Logic App with HTTP Requests for Getting User Details from Target and Build SCIM Payload
 
-Since the logic app and custom extension have now been created but don't contain the low code steps, let's make sure to add these in. For that we have generated example source code which you can 'copy and paste' into the logic app which has been created via the UI or Bicep. The source code can be found at ............
+Since the logic app and custom extension have now been created but don't contain the low code steps, let's make sure to add these in. For that we have generated example source code which you can 'copy and paste' into the logic app which has been created via the UI or Bicep. The source code can be found at [LogicAppExample.json](../../resources/resource-6-logicapp-example/LogicAppExample.json)
 
 Once the source code is copied in, open the designer in logic apps and make sure to change the following details:
 - ObjectID Condition
