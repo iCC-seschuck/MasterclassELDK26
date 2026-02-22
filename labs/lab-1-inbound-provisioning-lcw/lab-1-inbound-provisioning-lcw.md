@@ -190,8 +190,10 @@ Microsoft Learn source:  [Lifecycle Workflows - Create](https://learn.microsoft.
 ## Lab 1.12 - Run the workflows one-by-one
 
 Make sure that all tasks are exectued successfully.
-**NOTE:** Be aware that for some tasks the manager need to be configured on the user account and both should have a mailbox assigned.
-**NOTE:** Be aware that the Temporary Access Pass authentication method should be configured within your tenant to generate the Temporary Access Pass with Lifecycle Workflows.
+
+**NOTE #1:** Be aware that for some tasks the manager need to be configured on the user account and both should have a mailbox assigned.
+
+**NOTE #2:** Be aware that the Temporary Access Pass authentication method should be configured within your tenant to generate the Temporary Access Pass with Lifecycle Workflows.
 
 Microsoft Learn source:  [Lifecycle Workflows - Run on Demand](https://learn.microsoft.com/en-us/entra/id-governance/on-demand-workflow)
 
