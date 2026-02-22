@@ -155,7 +155,7 @@ Using a Client Credential OAuth2 flow, you can now use this Application Client t
 
 ## Lab 1.9 - Create pre-hire workflow
 
-Now first create a pre-hire workflow in lifecycle workflows and scope the pre-hire workflow to be executed for users with the department 'ELDK 2026' 7 days prior to the employeeHireDate. Within this workflow make sure the following actions are set:
+Now the user has been created let's create a pre-hire workflow in lifecycle workflows and scope the pre-hire workflow to be executed for users with the department 'ELDK 2026' 7 days prior to the employeeHireDate. For this you need to have, at a bear mnimimum, the Lifecycle Workflow Administrator role assigned. Within this workflow make sure the following actions are set:
 
 - Generate TAP and Send Email to manager
 - Assign at least a mailbox license to the end user
@@ -189,9 +189,9 @@ Microsoft Learn source:  [Lifecycle Workflows - Create](https://learn.microsoft.
 
 ## Lab 1.12 - Run the workflows one-by-one
 
-Make sure that all tasks are exectued successfully.&nbsp;
-**NOTE:** Be aware that for some tasks the manager need to be configured on the user account and both should have a mailbox assigned.&nbsp;
-**NOTE:** Be aware that the Temporary Access Pass authentication method should be configured within your tenant to generate the Temporary Access Pass./
+Make sure that all tasks are exectued successfully.
+**NOTE:** Be aware that for some tasks the manager need to be configured on the user account and both should have a mailbox assigned.
+**NOTE:** Be aware that the Temporary Access Pass authentication method should be configured within your tenant to generate the Temporary Access Pass with Lifecycle Workflows.
 
 Microsoft Learn source:  [Lifecycle Workflows - Run on Demand](https://learn.microsoft.com/en-us/entra/id-governance/on-demand-workflow)
 
@@ -244,6 +244,8 @@ In some cases you perhaps want to add more advanced scenario's with low code to 
 - Configure one of the workflows to run a custom task extension which is created earlier
 
 Microsoft Learn source: [Lifecycle Workflows - Custom Task Extension](https://learn.microsoft.com/en-us/entra/id-governance/lifecycle-workflow-extensibility)
+
+&nbsp;
 
 ## Lab 1.16 - Summary & Discussion
 
