@@ -1,4 +1,4 @@
-# Lab 2 - Entitlement Management
+# Lab 2 - Entitlement Management and Custom Extensions
 
 The activities in this lab will all be executed within the [Entitlement Management](https://entra.microsoft.com/#view/Microsoft_AAD_ERM/DashboardBlade/~/GettingStarted) & [Lifecycle Workflows](https://entra.microsoft.com/#view/Microsoft_AAD_LifecycleManagement/CommonMenuBlade/~/overview) blade in Entra ID. For this you need at a bear minimum 'Identity Governance Administrator' and 'Lifecycle Workflow Administrator'. In Azure you need to have at least contributor permission to an Azure Subscription.
 
