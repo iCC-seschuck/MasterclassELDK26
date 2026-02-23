@@ -17,7 +17,20 @@ Now you've received a Temporary Access Pass in your regular email, sign-in with 
 
 &nbsp;
 
-## Lab 3.3 - Link privileged account to identity in Microsoft Defender XDR
+## Lab 3.4 - Link privileged account to identity in Microsoft Defender XDR
+
+Now the privileged account has been created and you've secured your privileged account with a passkey to make sure it's protected against phishing attacks, let's make sure that the account becomes really privileged. For that create a security group whith the following properties and settings:
+- The group has the type security and isn't dynamic.
+- The group name is 'SG-ELDK26-Role-IAM-Engineers'.
+- The group is enabled for Entra role assignments.
+- The group has at least the 'User Administrator Role' assigned as eligible.
+- The privileged account created in the previous lab is a member of the group.
+
+Once done, verify if you can activate the 'User Administrator Role' with the privileged account, created in the previous lab, in Privileged Identity Management to make sure the account is also being marked as a 'Privileged' account on the backend (as admin accounts without a role assignment aren't marked as 'privileged').
+
+&nbsp;
+
+## Lab 3.5 - Link privileged account to identity in Microsoft Defender XDR
 
 Create a manual link between the privileged user and the regular (work) account of the identity:
 
@@ -33,7 +46,7 @@ Microsoft Learn source: [MDI - Link or unlink account to identity](https://learn
 
 &nbsp;
 
-## Lab 3.4 - Assign privileged account to Restricted Management Administrative Unit (RMAU)
+## Lab 3.6 - Assign privileged account to Restricted Management Administrative Unit (RMAU)
 
 1. Create an [Administrative Unit with dynamic membership](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/admin-units-members-dynamic?tabs=admin-center#add-rules-for-dynamic-membership-groups) named “Privileged Users” and enable “[Restricted management administrative unit](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/admin-units-restricted-management)” during the creation process.
 
