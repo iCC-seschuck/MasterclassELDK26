@@ -27,6 +27,8 @@ Create a manual link between the privileged user and the regular (work) account 
 
 After the link has been created, navigate to the identity page of the work account.
 
+**NOTE:** There is a sligth chance on delay between the privileged account creation and the backend sync within the Microsoft Defender XDR portal for the account to become visible and being able to link it to the regular user account. If you can't find one or both of the accounts please give the backend some time to sync and return to this lab exercise later on the day.
+
 Microsoft Learn source: [MDI - Link or unlink account to identity](https://learn.microsoft.com/en-us/defender-for-identity/link-unlink-account-to-identity#how-to-manually-link-or-unlink-accounts-to-an-identity).
 
 &nbsp;
